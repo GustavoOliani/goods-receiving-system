@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Empresa</th>
+                    <th>Horário do agendamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ngFor="let scheduler in scheculer$ | async">
+                    <td>{{ scheduler.companyName }}</td>
+                    <td>{{ scheduler.companyName }}</td>
+                    <td>
+                        <span class="float-end">
+                            <button class="btn btn-outline-warning mb-1 ms-1 btn-sm">
+                                Atualizar
+                            </button>
+                            <button class="btn btn-outline-danger mb-1 ms-1 btn-sm">
+                                Remover
+                            </button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
