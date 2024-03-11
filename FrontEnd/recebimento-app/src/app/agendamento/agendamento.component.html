@@ -4,8 +4,8 @@
 
 <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
     <label for="supplier">Fornecedor: </label>
-    <select name="supplier" id="supplier" [value]="supplierList" class="form-control" ngModel required>
-        <option *ngFor="let i of supplierList">{{ i }}</option>
+    <select name="supplier" id="supplier" [value]="supplierList$" class="form-control" ngModel required>
+        <option *ngFor="let i of supplierList$ | async">{{ i }}</option>
     </select>
     <br/>
     <label for="note">Nota fiscal: </label>
