@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
-import { EmpresaComponent } from './empresa/empresa.component';
-import { AgendamentoComponent } from './agendamento/agendamento.component';
+import { EmpresaComponent } from './company/company.component';
+import { AgendamentoComponent } from './schedule/schedule.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AgendamentoComponent } from '../agendamento/agendamento.component';
+import { AgendamentoComponent } from '../schedule/schedule.component';
 import { AppService } from '../app.service';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';

@@ -4,7 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CompanyInterface } from '../empresa/empresa.component';
+import { CompanyInterface } from '../company/company.component';
 
 @Component({
   selector: 'app-agendamento',

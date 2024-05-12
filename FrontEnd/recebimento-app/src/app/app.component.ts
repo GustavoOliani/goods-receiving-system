@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { EmpresaComponent } from './empresa/empresa.component';
-import { AgendamentoComponent } from './agendamento/agendamento.component';
+import { EmpresaComponent } from './company/company.component';
+import { AgendamentoComponent } from './schedule/schedule.component';
 import { NgClass } from '@angular/common';
 import { AppService } from './app.service';
 import { HttpClientModule } from '@angular/common/http';

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CompanyInterface } from './empresa/empresa.component';
+import { CompanyInterface } from './company/company.component';
 import { SchedulesInterface } from './home/home.component';
 import { Observable, tap } from 'rxjs';
 
