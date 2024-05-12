@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { EmpresaComponent } from './company/company.component';
-import { AgendamentoComponent } from './schedule/schedule.component';
+import { CompanyComponent } from './company/company.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 import { NgClass } from '@angular/common';
 import { AppService } from './app.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, EmpresaComponent, AgendamentoComponent, NgClass, HttpClientModule],
+  imports: [RouterOutlet, CompanyComponent, ScheduleComponent, NgClass, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

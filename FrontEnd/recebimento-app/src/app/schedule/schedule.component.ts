@@ -7,13 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CompanyInterface } from '../company/company.component';
 
 @Component({
-  selector: 'app-agendamento',
+  selector: 'app-schedule',
   standalone: true,
   imports: [NgClass, NgFor, FormsModule, HttpClientModule, CommonModule],
-  templateUrl: './agendamento.component.html',
-  styleUrl: './agendamento.component.css'
+  templateUrl: './schedule.component.html',
+  styleUrl: './schedule.component.css'
 })
-export class AgendamentoComponent implements OnInit{
+export class ScheduleComponent implements OnInit{
 
   // GET supplierList() as JSON
   //supplierList : Array<string> = ['A', 'B', 'C', 'D'];

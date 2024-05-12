@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AgendamentoComponent } from '../schedule/schedule.component';
+import { ScheduleComponent } from '../schedule/schedule.component';
 import { AppService } from '../app.service';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [AgendamentoComponent, HttpClientModule],
+  imports: [ScheduleComponent, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

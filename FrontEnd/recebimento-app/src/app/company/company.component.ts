@@ -6,13 +6,13 @@ import { AppService } from '../app.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
-  selector: 'app-empresa',
+  selector: 'app-company',
   standalone: true,
   imports: [NgClass, FormsModule, HttpClientModule],
-  templateUrl: './empresa.component.html',
-  styleUrl: './empresa.component.css'
+  templateUrl: './company.component.html',
+  styleUrl: './company.component.css'
 })
-export class EmpresaComponent implements OnInit{
+export class CompanyComponent implements OnInit{
 
   supplier$ : Observable<CompanyInterface[]>;
 
