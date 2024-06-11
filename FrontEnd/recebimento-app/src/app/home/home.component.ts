@@ -3,19 +3,20 @@ import { ScheduleComponent } from '../schedule/schedule.component';
 import { AppService } from '../app.service';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import { ScheduleInterface } from '../interfaces/scheduleInterface';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ScheduleComponent, HttpClientModule],
+  imports: [HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
 
-  scheduler : SchedulesInterface[] | undefined;
-  //scheduler$ : Observable<SchedulesInterface[]> | undefined;
+  scheduler : ScheduleInterface[] | undefined;
+  //scheduler$ : Observable<ScheduleInterface[]> | undefined;
 
   //constructor(private service: AppService){}
 
@@ -27,10 +28,4 @@ export class HomeComponent implements OnInit {
    //this.scheduler$ = this.service.scheduleList();
   }
 
-}
-
-export interface SchedulesInterface{
-  companyName: string;
-  date: Date;
-  weight: number;
 }
