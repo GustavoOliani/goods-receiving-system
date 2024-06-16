@@ -1,9 +1,8 @@
 import { Time } from "@angular/common";
-import { CompanyInterface } from "../company/company.component";
+import { CompanyInterface } from "./companyInterface";
 
 export interface ScheduleInterface{
     supplier : CompanyInterface;
     fiscalNote : string;
     receiptDate: Date;
-    receiptTime: Time;
   }

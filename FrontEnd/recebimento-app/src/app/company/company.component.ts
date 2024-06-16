@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CompanyInterface } from '../interfaces/companyInterface';
 
 @Component({
   selector: 'app-company',
@@ -35,7 +36,4 @@ export class CompanyComponent implements OnInit{
 
 }
 
-export interface CompanyInterface{
-  name: string;
-  cnpj: string;
-}
+

@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CompanyInterface } from './company/company.component';
 import { Observable, tap } from 'rxjs';
 import { ScheduleInterface } from './interfaces/scheduleInterface';
+import { CompanyInterface } from './interfaces/companyInterface';
 
 @Injectable({
   providedIn: 'any'
@@ -13,7 +13,7 @@ export class AppService {
   private readonly apiSchedules = 'http://localhost:8080/api/schedule'; //server do backend
   constructor(private http: HttpClient) { }
 
-  supplierList() {
+  supplierList(): Observable<CompanyInterface[]> {
     return this.http.get<CompanyInterface[]>(this.apiCompany);
   }
 
@@ -21,9 +21,13 @@ export class AppService {
   //   return this.http.get<SchedulesInterface[]>(this.apiSchedules);
   // }
 
-  saveSchedule(scheduleForm: ScheduleInterface){
-    return this.http.post<ScheduleInterface>(this.apiSchedules, scheduleForm);
-    console.log(scheduleForm);
+  saveSchedule(body: ScheduleInterface){
+    console.log(body);
+    return this.http.post<ScheduleInterface>(this.apiSchedules, body);
+  }
+
+  scheduleList(): Observable<ScheduleInterface[]>{
+    return this.http.get<ScheduleInterface[]>(this.apiSchedules);
   }
 
 }

@@ -4,28 +4,30 @@ import { AppService } from '../app.service';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ScheduleInterface } from '../interfaces/scheduleInterface';
+import {MatTableModule} from '@angular/material/table';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, MatTableModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
 
-  scheduler : ScheduleInterface[] | undefined;
-  //scheduler$ : Observable<ScheduleInterface[]> | undefined;
+  scheduler : Array<ScheduleInterface> = [];
+  displayedColumns: string[] = ['name', 'date'];
 
-  //constructor(private service: AppService){}
+  constructor(private service: AppService){}
 
   ngOnInit(): void {
-    /*
-    this.service.schedules()
-    .subscribe(dados => this.scheculer = dados);
-    */
-   //this.scheduler$ = this.service.scheduleList();
+    this.service.scheduleList().subscribe( (schedule) => {
+      this.scheduler = schedule;
+      console.log("GET - dates: " + schedule[1].receiptDate);
+    });
+    console.log("GET: " + this.scheduler);
+    
   }
 
 }
