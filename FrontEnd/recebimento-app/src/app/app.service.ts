@@ -17,9 +17,10 @@ export class AppService {
     return this.http.get<CompanyInterface[]>(this.apiCompany);
   }
 
-  // scheduleList(){
-  //   return this.http.get<SchedulesInterface[]>(this.apiSchedules);
-  // }
+  saveCompany(body: CompanyInterface){
+    console.log(body);
+    return this.http.post<ScheduleInterface>(this.apiCompany, body);
+  }
 
   saveSchedule(body: ScheduleInterface){
     console.log(body);

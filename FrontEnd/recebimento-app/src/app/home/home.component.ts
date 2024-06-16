@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ScheduleInterface } from '../interfaces/scheduleInterface';
 import {MatTableModule} from '@angular/material/table';
+import { scheduler } from 'timers/promises';
 
 
 @Component({
@@ -23,11 +24,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.scheduleList().subscribe( (schedule) => {
+      // schedule.forEach(element => {
+      //   element.receiptDate = element.receiptDate.toLocaleDateString('pt-BR');
+      // });
       this.scheduler = schedule;
-      console.log("GET - dates: " + schedule[1].receiptDate);
     });
     console.log("GET: " + this.scheduler);
-    
   }
-
 }

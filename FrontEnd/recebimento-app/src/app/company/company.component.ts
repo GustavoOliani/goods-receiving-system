@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyInterface } from '../interfaces/companyInterface';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-company',
@@ -15,25 +16,34 @@ import { CompanyInterface } from '../interfaces/companyInterface';
 })
 export class CompanyComponent implements OnInit{
 
-  supplier$ : Observable<CompanyInterface[]>;
+  supplierList : Array<CompanyInterface> = [];
+  snackBar: any;
 
   constructor(private service: AppService){
-    this.supplier$ = this.service.supplierList();
   }
 
   onSubmit(itemForm: NgForm){
     /* POST saveCompany(itemForm.value); // o itemForm.value já é um JSON
-    
+    TODO - validação de empresa existente por cnpj
     */
-    this.supplier$.forEach((supplier) => console.log("supplierList: " + supplier));
-    console.log(itemForm.value);
+    this.service.saveCompany(itemForm.value).subscribe({
+      next: (result) => {console.log(itemForm)},
+      error: (error) => {this.popUpMessage('Falha ao salvar agendamento')}
+    });
+  }
+
+  private popUpMessage(message: string){
+    this.snackBar.open('Erro ao salvar o agendamento', '', {
+      horizontalPosition: 'end',
+      duration: 3000
+    });
   }
 
   ngOnInit(): void {
-    
+    this.service.supplierList().subscribe( (companyList) => {
+      this.supplierList = companyList;
+    });
   }
-
-
 }
 
 
