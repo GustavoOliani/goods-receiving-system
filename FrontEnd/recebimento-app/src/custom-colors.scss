@@ -1,0 +1,68 @@
+/* For use in src/lib/core/theming/_palette.scss */
+$custom-primary: (
+    50 : #e2e7f0,
+    100 : #b8c3da,
+    200 : #889bc1,
+    300 : #5873a8,
+    400 : #355596,
+    500 : #113783,
+    600 : #0f317b,
+    700 : #0c2a70,
+    800 : #0a2366,
+    900 : #051653,
+    A100 : #8698ff,
+    A200 : #536dff,
+    A400 : #2042ff,
+    A700 : #072cff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$custom-accent: (
+    50 : #ebedf0,
+    100 : #cdd1da,
+    200 : #acb3c1,
+    300 : #8a94a8,
+    400 : #717d96,
+    500 : #586683,
+    600 : #505e7b,
+    700 : #475370,
+    800 : #3d4966,
+    900 : #2d3853,
+    A100 : #9fb9ff,
+    A200 : #6c94ff,
+    A400 : #396eff,
+    A700 : #1f5cff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+

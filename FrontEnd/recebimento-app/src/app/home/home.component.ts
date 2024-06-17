@@ -31,4 +31,9 @@ export class HomeComponent implements OnInit {
     });
     console.log("GET: " + this.scheduler);
   }
+
+  formatDateToString(date: Date){
+    console.log(date);
+    return new Date(date).toLocaleString('pt-BR', {timeZone: 'UTC'});
+  }
 }

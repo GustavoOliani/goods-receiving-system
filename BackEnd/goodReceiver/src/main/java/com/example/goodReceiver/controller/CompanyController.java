@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.goodReceiver.model.Company;
-import com.example.goodReceiver.model.Schedule;
 import com.example.goodReceiver.repository.CompanyRepository;
 
 @RestController
@@ -25,6 +24,7 @@ public class CompanyController {
 		this.companyRepository = companyRepository;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping
 	public List<Company> supplierList(){
 		return companyRepository.findAll();
@@ -34,7 +34,7 @@ public class CompanyController {
 	@PostMapping
 	public ResponseEntity<Company> saveCompany(@RequestBody Company entity) {
 		//TODO process POST request
-		Company company = new Company(entity.getName(), entity.getCnpj());
-		return ResponseEntity.status(HttpStatus.CREATED).body(companyRepository.save(company));
+		//Company company = new Company(entity.getName(), entity.getCnpj());
+		return ResponseEntity.status(HttpStatus.CREATED).body(companyRepository.save(entity));
 	}
 }

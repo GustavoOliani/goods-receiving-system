@@ -1,12 +1,17 @@
-<nav class="nav navbar-expand-lg py-lg-3 navbar-dark">
-    <div class="container-fluid col-12">
-        <ul class="navbar-nav nav-pills nav-fill me-auto align-items-center">
-            <a href="" class="navbar-brand me-5"><img src="/assets/images/logo.png" alt="logo da empresa" class="logo-dark"></a>
-            <li class="nav-item 1"><a href="" class=".text-primary">Home</a></li>
-            <li class="nav-item 1"><a href="/empresa" class=".text-primary">Configuração de fornecedores</a></li>
-            <li class="nav-item 1"><a href="/agendamento" class=".text-primary">Agendar recebimento</a></li>
-        </ul>
+<mat-toolbar class="d-none d-sm-flex justify-content-between" color="primary">
+    <div class="d-flex align-items-center">
+        <div>
+            <img height="50px" class="logo" src="/assets/images/logo.png">
+        </div>
+        <div class="ms-3">
+            <button class="headerBtn me-3" routerLink="/" mat-button>Tela inicial</button>
+            <button class="headerBtn me-3" routerLink="/empresa" mat-button>Configuração de fornecedores</button>
+            <button class="headerBtn me-3" routerLink="/agendamento" mat-button>Agendar recebimento</button>
+        </div>
     </div>
-</nav>
+    <div>
+        <img height="50px" class="logo" src="/assets/images/logo.png">        
+    </div>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

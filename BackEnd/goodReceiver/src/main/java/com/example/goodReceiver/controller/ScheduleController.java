@@ -41,8 +41,8 @@ public class ScheduleController {
 	public ResponseEntity<Schedule> saveSchedule(@RequestBody Schedule entity) {
 		//TODO process POST request
 		System.out.println("POST schedule: " + entity.getReceiptDate());
-		Schedule schedule = new Schedule(entity.getSupplier(), entity.getFiscalNote(), entity.getReceiptDate());
-		return ResponseEntity.status(HttpStatus.CREATED).body(scheduleRepository.save(schedule));
+		//Schedule schedule = new Schedule(entity.getSupplier(), entity.getFiscalNote(), entity.getReceiptDate());
+		return ResponseEntity.status(HttpStatus.CREATED).body(scheduleRepository.save(entity));
 	}
 	
 }
