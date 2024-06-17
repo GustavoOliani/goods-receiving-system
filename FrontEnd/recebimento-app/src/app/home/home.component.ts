@@ -1,36 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { AgendamentoComponent } from '../agendamento/agendamento.component';
+import { ScheduleComponent } from '../schedule/schedule.component';
 import { AppService } from '../app.service';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import { ScheduleInterface } from '../interfaces/scheduleInterface';
+import {MatTableModule} from '@angular/material/table';
+import { scheduler } from 'timers/promises';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [AgendamentoComponent, HttpClientModule],
+  imports: [HttpClientModule, MatTableModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
 
-  scheduler : SchedulesInterface[] | undefined;
-  //scheduler$ : Observable<SchedulesInterface[]> | undefined;
+  scheduler : Array<ScheduleInterface> = [];
+  displayedColumns: string[] = ['name', 'date'];
 
-  //constructor(private service: AppService){}
+  constructor(private service: AppService){}
 
   ngOnInit(): void {
-    /*
-    this.service.schedules()
-    .subscribe(dados => this.scheculer = dados);
-    */
-   //this.scheduler$ = this.service.scheduleList();
+    this.service.scheduleList().subscribe( (schedule) => {
+      // schedule.forEach(element => {
+      //   element.receiptDate = element.receiptDate.toLocaleDateString('pt-BR');
+      // });
+      this.scheduler = schedule;
+    });
+    console.log("GET: " + this.scheduler);
   }
 
-}
-
-export interface SchedulesInterface{
-  companyName: string;
-  date: Date;
-  weight: number;
+  formatDateToString(date: Date){
+    console.log(date);
+    return new Date(date).toLocaleString('pt-BR', {timeZone: 'UTC'});
+  }
 }

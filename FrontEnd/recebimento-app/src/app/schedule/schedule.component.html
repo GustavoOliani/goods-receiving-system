@@ -1,0 +1,19 @@
+<h1 class="d-flex justify-content-center">Agendamento dos produtos</h1>
+<!-- Horário do agendamento -->
+<div class="d-flex justify-content-center w-10">
+    <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+        <label for="supplier">Fornecedor: </label>
+        <select name="supplier" id="supplier"  class="form-control" ngModel required>
+            <option *ngFor="let company of supplierList" [ngValue] = company >{{company.name}}</option>
+        </select>
+        <br/>
+        <label for="fiscalNote">Nota fiscal: </label>
+        <input type="text" id="fiscalNote" name="fiscalNote" class="form-control" ngModel/>
+        <br/>
+        <!-- dia e horário -->
+        <label>Dia e horário do recebimento: </label>
+        <input type="datetime-local" name="receiptDate" id="receiptDate" class="form-control" ngModel>
+        <br/>
+        <button type="submit" class="btn btn-outline-primary">Salvar</button>      
+    </form>
+</div>

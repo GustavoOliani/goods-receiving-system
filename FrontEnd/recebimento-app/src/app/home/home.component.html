@@ -1,31 +1,27 @@
-<div class="card">
-    <div class="card-header">
+<h1 class="m-3">Agendamentos</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 my-2">
+      <table mat-table [dataSource]="scheduler" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <td mat-cell *matCellDef="let element"> {{element.supplier.name}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Data e hora </th>
+          <td mat-cell *matCellDef="let element"> {{formatDateToString(element.receiptDate)}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
     </div>
-    <div class="card-body">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Empresa</th>
-                    <th>Horário do agendamento</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ngFor="let scheduler in scheculer | async">
-                    <td>{{ scheduler }}</td>
-                    <td>{{ scheduler }}</td>
-                    <td>
-                        <span class="float-end">
-                            <button class="btn btn-outline-warning mb-1 ms-1 btn-sm">
-                                Atualizar
-                            </button>
-                            <button class="btn btn-outline-danger mb-1 ms-1 btn-sm">
-                                Remover
-                            </button>
-                        </span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  </div>
 </div>

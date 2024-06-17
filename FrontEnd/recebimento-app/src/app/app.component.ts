@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { EmpresaComponent } from './empresa/empresa.component';
-import { AgendamentoComponent } from './agendamento/agendamento.component';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { CompanyComponent } from './company/company.component';
 import { NgClass } from '@angular/common';
 import { AppService } from './app.service';
 import { HttpClientModule } from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, EmpresaComponent, AgendamentoComponent, NgClass, HttpClientModule],
+  imports: [CompanyComponent, NgClass, HttpClientModule, MatToolbarModule, RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
