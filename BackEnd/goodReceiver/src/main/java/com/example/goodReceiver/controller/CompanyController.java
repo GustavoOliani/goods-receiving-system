@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,10 +32,18 @@ public class CompanyController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/{id}")
+	public ResponseEntity<Company> findfById(@PathVariable("id") Long id) {
+		return companyRepository.findById(id)
+				.map(record -> ResponseEntity.ok().body(record))
+				.orElse(ResponseEntity.notFound().build());
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping
-	public ResponseEntity<Company> saveCompany(@RequestBody Company entity) {
+	public ResponseEntity<Company> saveCompany(@RequestBody Company company) {
 		//TODO process POST request
 		//Company company = new Company(entity.getName(), entity.getCnpj());
-		return ResponseEntity.status(HttpStatus.CREATED).body(companyRepository.save(entity));
+		return ResponseEntity.status(HttpStatus.CREATED).body(companyRepository.save(company));
 	}
 }
