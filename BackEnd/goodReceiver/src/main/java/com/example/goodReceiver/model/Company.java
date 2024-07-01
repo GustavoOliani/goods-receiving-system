@@ -1,6 +1,5 @@
 package com.example.goodReceiver.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,7 +18,7 @@ public class Company {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonProperty("_id")
+	@JsonProperty("id")
 	private Long id;
 	
 	@Column(nullable = false)
@@ -37,6 +36,10 @@ public class Company {
 	}
 	
 	public Company() {}
+	
+	public Long getId() {
+		return id;
+	}
 	
 	public String getName() {
 		return name;
