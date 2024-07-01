@@ -1,16 +1,17 @@
-import { NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { NgClass, NgIf } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyInterface } from '../interfaces/companyInterface';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-company',
   standalone: true,
-  imports: [NgClass, FormsModule, HttpClientModule],
+  imports: [NgClass, FormsModule, HttpClientModule, NgIf],
   templateUrl: './company.component.html',
   styleUrl: './company.component.css'
 })
@@ -19,7 +20,12 @@ export class CompanyComponent implements OnInit{
   supplierList : Array<CompanyInterface> = [];
   snackBar: any;
 
-  constructor(private service: AppService){
+  @Input() id!: string;
+  nameForm: string = '';
+  companyIdForm: string = '';
+
+  constructor(private service: AppService, private router: Router, private route: ActivatedRoute){
+
   }
 
   onSubmit(itemForm: NgForm){
@@ -40,9 +46,18 @@ export class CompanyComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.service.supplierList().subscribe( (companyList) => {
-      this.supplierList = companyList;
-    });
+    if(this.id){
+      this.service.companyById(Number(this.id)).subscribe( (company) => {
+        console.log("company with id: " +  company);
+        this.nameForm = company.name;
+        this.companyIdForm = company.cnpj;
+      });
+    }else{
+      this.service.supplierList().subscribe( (companyList) => {
+        console.log("companyList: " +  companyList);
+        this.supplierList = companyList;
+      });
+    }
   }
 }
 
