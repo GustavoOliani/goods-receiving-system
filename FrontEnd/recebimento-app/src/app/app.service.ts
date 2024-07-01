@@ -10,11 +10,16 @@ import { CompanyInterface } from './interfaces/companyInterface';
 export class AppService {
 
   private readonly apiCompany = 'http://localhost:8080/api/company'; //server do backend
+  private readonly apiCompanyWithId = 'http://localhost:8080/api/company/'; //server do backend
   private readonly apiSchedules = 'http://localhost:8080/api/schedule'; //server do backend
   constructor(private http: HttpClient) { }
 
   supplierList(): Observable<CompanyInterface[]> {
     return this.http.get<CompanyInterface[]>(this.apiCompany);
+  }
+
+  companyById(id: number): Observable<CompanyInterface> {
+    return this.http.get<CompanyInterface>(this.apiCompanyWithId + id);
   }
 
   saveCompany(body: CompanyInterface){
