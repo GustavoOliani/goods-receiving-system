@@ -1,5 +1,5 @@
 export interface CompanyInterface{
-    _id?: number;
+    id?: number;
     name: string;
     cnpj: string;
   }

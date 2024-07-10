@@ -35,7 +35,7 @@ export class ScheduleComponent implements OnInit{
   }
 
   private popUpMessage(message: string){
-    this.snackBar.open('Erro ao salvar o agendamento', '', {
+    this.snackBar.open(message, '', {
       horizontalPosition: 'end',
       duration: 3000
     });
