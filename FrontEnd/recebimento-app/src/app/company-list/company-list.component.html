@@ -1,11 +1,14 @@
 <h1 class="m-3">Fornecedores</h1>
 
-<button mat-fab extended matTooltip="Adicionar fornecedor" class="btn-primary" color="primary" routerLink="/empresa">
-  <mat-icon fontIcon="add"></mat-icon>
-  Adicionar
-</button>
-
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-12 my-2">
+      <button mat-fab extended matTooltip="Adicionar fornecedor" class="btn-primary" color="primary" routerLink="/empresa">
+        <mat-icon fontIcon="add"></mat-icon>
+        Adicionar
+      </button>
+    </div>
+  </div>
   <div class="row">
     <div class="col-12 my-2">
       <table mat-table [dataSource]="supplier" class="mat-elevation-z8">
