@@ -8,12 +8,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { CompanyComponent } from '../company/company.component';
 import { NgIf } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-company-list',
   standalone: true,
-  imports: [HttpClientModule, MatTableModule, MatButtonModule, MatIconModule, MatTooltipModule, CompanyComponent, NgIf],
+  imports: [HttpClientModule, MatTableModule, MatButtonModule, MatIconModule, MatTooltipModule, CompanyComponent, NgIf, RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule],
   templateUrl: './company-list.component.html',
   styleUrl: './company-list.component.css'
 })
@@ -41,7 +41,8 @@ export class CompanyListComponent {
   // }
 
   onEdit(company: CompanyInterface){
-    this.router.navigate(['/empresa', company._id], {relativeTo:this.route})
+    console.log("page(company-list) company.id: " + company.id);
+    this.router.navigate(['/empresa', company.id], {relativeTo:this.route});
   }
 
 }

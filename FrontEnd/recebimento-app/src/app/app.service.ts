@@ -15,6 +15,7 @@ export class AppService {
   constructor(private http: HttpClient) { }
 
   supplierList(): Observable<CompanyInterface[]> {
+    console.log("supplierList: ");
     return this.http.get<CompanyInterface[]>(this.apiCompany);
   }
 
@@ -23,12 +24,14 @@ export class AppService {
   }
 
   saveCompany(body: CompanyInterface){
-    console.log(body);
     return this.http.post<ScheduleInterface>(this.apiCompany, body);
+  }
+  
+  updateCompany(body: CompanyInterface){
+    return this.http.post<ScheduleInterface>(this.apiCompanyWithId + body.id, body);
   }
 
   saveSchedule(body: ScheduleInterface){
-    console.log(body);
     return this.http.post<ScheduleInterface>(this.apiSchedules, body);
   }
 
