@@ -20,7 +20,7 @@ export class CompanyComponent implements OnInit{
   supplierList : Array<CompanyInterface> = [];
   snackBar: any;
 
-  @Input() id!: string;
+  @Input() id!: number;
   nameForm: string = '';
   companyIdForm: string = '';
 
@@ -28,21 +28,31 @@ export class CompanyComponent implements OnInit{
 
   }
 
+  private popUpMessage(message: string){
+    this.snackBar.open(message, {
+      horizontalPosition: 'end',
+      duration: 3000
+    });
+  }
+
   onSubmit(itemForm: NgForm){
     /* POST saveCompany(itemForm.value); // o itemForm.value já é um JSON
     TODO - validação de empresa existente por cnpj
     */
-    this.service.saveCompany(itemForm.value).subscribe({
-      next: (result) => {console.log(itemForm)},
-      error: (error) => {this.popUpMessage('Falha ao salvar agendamento')}
-    });
-  }
-
-  private popUpMessage(message: string){
-    this.snackBar.open('Erro ao salvar o agendamento', '', {
-      horizontalPosition: 'end',
-      duration: 3000
-    });
+    if(this.id){
+      console.log('UPDATE: ' + this.id + " itemForm: " + itemForm.value);
+      itemForm.value.id = this.id;
+      this.service.updateCompany(itemForm.value).subscribe({
+        next: (result) => {console.log("UPDATE sucess: " + itemForm.value)},
+        error: (error) => {this.popUpMessage('Falha ao atualizar empresa')}
+      });
+    }else{
+      console.log('CREATE: ' + this.id + " itemForm: " + itemForm.value);
+      this.service.saveCompany(itemForm.value).subscribe({
+        next: (result) => {console.log("CREATE sucess: " + itemForm.value)},
+        error: (error) => {this.popUpMessage('Falha ao criar empresa')}
+      });
+    }
   }
 
   ngOnInit(): void {
