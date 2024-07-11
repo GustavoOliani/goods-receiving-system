@@ -51,6 +51,7 @@ export class CompanyListComponent {
       next: (result) => {console.log("Delete sucess: " + company.id)},
       error: (error) => {console.log('Falha ao deletar empresa')}
     });
+    window.location.reload();
   }
 
 }
