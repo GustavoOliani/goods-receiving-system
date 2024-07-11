@@ -41,8 +41,16 @@ export class CompanyListComponent {
   // }
 
   onEdit(company: CompanyInterface){
-    console.log("page(company-list) company.id: " + company.id);
+    console.log("edit: page(company-list) company.id: " + company.id);
     this.router.navigate(['/empresa', company.id], {relativeTo:this.route});
+  }
+
+  onDelete(company: CompanyInterface){
+    console.log("delete page(company-list) company.id: " + company.id);
+    this.service.deleteCompany(company).subscribe({
+      next: (result) => {console.log("Delete sucess: " + company.id)},
+      error: (error) => {console.log('Falha ao deletar empresa')}
+    });
   }
 
 }
