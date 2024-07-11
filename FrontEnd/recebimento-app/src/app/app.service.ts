@@ -28,7 +28,11 @@ export class AppService {
   }
   
   updateCompany(body: CompanyInterface){
-    return this.http.post<ScheduleInterface>(this.apiCompanyWithId + body.id, body);
+    return this.http.post<CompanyInterface>(this.apiCompanyWithId + body.id, body);
+  }
+
+  deleteCompany(body: CompanyInterface){
+    return this.http.delete<CompanyInterface>(this.apiCompanyWithId + body.id);
   }
 
   saveSchedule(body: ScheduleInterface){
