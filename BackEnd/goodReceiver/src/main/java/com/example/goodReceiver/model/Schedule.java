@@ -42,6 +42,10 @@ public class Schedule {
 	}
 	
 	public Schedule() {}
+	
+	public Long getId() {
+		return id;
+	}
 
 	public Company getSupplier() {
 		return supplier;
