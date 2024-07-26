@@ -11,6 +11,7 @@ export class AppService {
 
   private readonly apiCompany = 'http://localhost:8080/api/company'; //server do backend
   private readonly apiCompanyWithId = 'http://localhost:8080/api/company/'; //server do backend
+  private readonly apiSchedulesWithId = 'http://localhost:8080/api/schedule/'; //server do backend
   private readonly apiSchedules = 'http://localhost:8080/api/schedule'; //server do backend
   constructor(private http: HttpClient) { }
 
@@ -41,6 +42,10 @@ export class AppService {
 
   scheduleList(): Observable<ScheduleInterface[]>{
     return this.http.get<ScheduleInterface[]>(this.apiSchedules);
+  }
+
+  scheduleById(id: number): Observable<ScheduleInterface> {
+    return this.http.get<ScheduleInterface>(this.apiSchedulesWithId + id);
   }
 
 }

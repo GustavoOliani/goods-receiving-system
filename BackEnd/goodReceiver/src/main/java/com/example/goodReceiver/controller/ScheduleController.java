@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -37,6 +38,15 @@ public class ScheduleController {
 	@GetMapping(path)
 	public @ResponseBody List<Schedule> scheduleList(){
 		return scheduleRepository.findAll();
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path + "/{id}")
+	public ResponseEntity<Schedule> findfById(@PathVariable("id") Long id) {
+		System.out.println("--------------------------Get FINDBYID--------------------------");
+		return scheduleRepository.findById(id)
+				.map(record -> ResponseEntity.ok().body(record))
+				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
