@@ -8,11 +8,11 @@
         </select>
         <br/>
         <label for="fiscalNote">Nota fiscal: </label>
-        <input type="text" id="fiscalNote" name="fiscalNote" class="form-control" ngModel/>
+        <input type="text" id="fiscalNote" name="fiscalNote" class="form-control" [ngModel] = "fiscalNoteForm"/>
         <br/>
         <!-- dia e horário -->
         <label>Dia e horário do recebimento: </label>
-        <input type="datetime-local" name="receiptDate" id="receiptDate" class="form-control" ngModel>
+        <input type="datetime-local" name="receiptDate" id="receiptDate" class="form-control" [ngModel] = "dateForm">
         <br/>
         <button type="submit" class="btn btn-outline-primary">Salvar</button>      
     </form>

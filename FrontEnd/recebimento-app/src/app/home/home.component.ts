@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ScheduleComponent } from '../schedule/schedule.component';
 import { AppService } from '../app.service';
 import { Observable } from 'rxjs';
@@ -22,16 +22,15 @@ import { NgIf } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
 
+  @Output() edit = new EventEmitter();
+
   scheduler : Array<ScheduleInterface> = [];
-  displayedColumns: string[] = ['name', 'date', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'date', 'actions'];
 
   constructor(private service: AppService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.service.scheduleList().subscribe( (schedule) => {
-      // schedule.forEach(element => {
-      //   element.receiptDate = element.receiptDate.toLocaleDateString('pt-BR');
-      // });
       this.scheduler = schedule;
     });
     console.log("GET: " + this.scheduler);
@@ -43,7 +42,6 @@ export class HomeComponent implements OnInit {
   }
 
   formatDateToString(date: Date){
-    console.log(date);
     return new Date(date).toLocaleString('pt-BR', {timeZone: 'UTC'});
   }
 }

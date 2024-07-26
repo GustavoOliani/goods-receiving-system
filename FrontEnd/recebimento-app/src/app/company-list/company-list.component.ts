@@ -19,7 +19,7 @@ import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } fr
 })
 export class CompanyListComponent {
   supplier : Array<CompanyInterface> = [];
-  displayedColumns: string[] = ['name', 'date','actions'];
+  displayedColumns: string[] = ['name', 'cnpj','actions'];
 
   @Output() edit = new EventEmitter();
 
@@ -27,9 +27,6 @@ export class CompanyListComponent {
 
   ngOnInit(): void {
     this.service.supplierList().subscribe( (supplier) => {
-      // supplier.forEach(element => {
-      //   element.receiptDate = element.receiptDate.toLocaleDateString('pt-BR');
-      // });
       this.supplier = supplier;
     });
     console.log("GET: " + this.supplier);
@@ -51,7 +48,7 @@ export class CompanyListComponent {
       next: (result) => {console.log("Delete sucess: " + company.id)},
       error: (error) => {console.log('Falha ao deletar empresa')}
     });
-    window.location.reload();
+    window.location.reload(); //mudar para retirar o item do array
   }
 
 }

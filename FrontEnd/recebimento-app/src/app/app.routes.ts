@@ -11,5 +11,6 @@ export const routes: Routes = [
     {path: 'empresa', component: CompanyComponent},
     {path: 'empresa/:id', component: CompanyComponent},
     {path: 'empresas', component: CompanyListComponent},
-    {path: 'agendamento', component: ScheduleComponent}
+    {path: 'agendamento', component: ScheduleComponent},
+    {path: 'agendamento/:id', component: ScheduleComponent}
 ];
